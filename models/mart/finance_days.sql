@@ -8,7 +8,7 @@ WITH orders_per_day AS (
 		,ROUND(SUM(purchase_cost),0) AS purchase_cost
 		,ROUND(SUM(shipping_fee),0) AS shipping_fee
 		,ROUND(SUM(log_cost),0) AS log_cost
-		,ROUND(SUM(ship_cost),0) AS ship_cost
+		,ROUND(SUM(CAST(ship_cost AS FLOAT64)),0) AS ship_cost
 		,SUM(quantity) AS quantity
 	FROM {{ref("int_orders_operational")}}
 	GROUP BY date_date
